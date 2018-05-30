@@ -4,7 +4,7 @@
  * @author      Diamond Sparrow
  * @version     1.0.0.0
  * @date        2016-10-04
- * @brief       This is C header file template.
+ * @brief       Filters C header file.
  **********************************************************************************************************************
  * @warning     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR \n
  *              IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\n
@@ -59,7 +59,7 @@ typedef struct
 /**
  * @brief   Low pass filter.
  *
- * @param   data    Low pass filter data. See @ref filters_low_pass_t.
+ * @param   data    Pointer to low pass filter data. See @ref filters_low_pass_t.
  * @param   input   Input data for low pass filter.
  * @param   cut_off Cut off value.
  *

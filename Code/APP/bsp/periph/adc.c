@@ -24,14 +24,13 @@
 
 #include "bsp/periph/adc.h"
 
-#include "../../sin_detect.h"
+#include "sin_detect.h"
 #include "chip.h"
 
 /**********************************************************************************************************************
  * Private definitions and macros
  *********************************************************************************************************************/
-#define ADC_SEQ_A_CH_COUNT      4           //!< Sequencer A channel count.
-#define ADC_SEQ_A_AVG_COUNT     5           //!< Sequencer A average count.
+#define ADC_AVG_COUNT   8   //!< ADC average count.
 
 /**********************************************************************************************************************
  * Private typedef
@@ -117,35 +116,33 @@ void adc_init(void)
     return;
 }
 
-void adc_a_handler(void)
+void adc_handler(void)
 {
     uint32_t raw = 0;
-    adc_id_t id = (adc_id_t)0;
     uint8_t i = 0;
 
-    for(i = 0; i < ADC_SEQ_A_AVG_COUNT; i++)
+    for(i = 0; i < ADC_AVG_COUNT; i++)
     {
-        for(id = (adc_id_t)0; id < ADC_ID_LAST; id++)
+        raw = Chip_ADC_GetDataReg(LPC_ADC, adc_seqa_ch_data[ADC_ID_SINUS_DETECT].ch);
+        if(ADC_DR_DATAVALID & raw)
         {
-            raw = Chip_ADC_GetDataReg(LPC_ADC, adc_seqa_ch_data[id].ch);
-            if(ADC_DR_DATAVALID & raw)
-            {
-                adc_seqa_ch_data[id].counter++;
-                adc_seqa_ch_data[id].acumulator += ADC_DR_RESULT(raw);
-            }
-            if(i == (ADC_SEQ_A_AVG_COUNT - 1))
-            {
-                adc_seqa_ch_data[id].value = adc_seqa_ch_data[id].acumulator / adc_seqa_ch_data[id].counter;
-                adc_seqa_ch_data[id].acumulator = 0;
-                adc_seqa_ch_data[id].counter = 0;
-            }
+            adc_seqa_ch_data[ADC_ID_SINUS_DETECT].counter++;
+            adc_seqa_ch_data[ADC_ID_SINUS_DETECT].acumulator += ADC_DR_RESULT(raw);
+        }
+        if(i == (ADC_AVG_COUNT - 1))
+        {
+            adc_seqa_ch_data[ADC_ID_SINUS_DETECT].value =
+                    adc_seqa_ch_data[ADC_ID_SINUS_DETECT].acumulator / adc_seqa_ch_data[ADC_ID_SINUS_DETECT].counter;
+            adc_seqa_ch_data[ADC_ID_SINUS_DETECT].acumulator = 0;
+            adc_seqa_ch_data[ADC_ID_SINUS_DETECT].counter = 0;
         }
     }
-    
-    sin_detect_handler(adc_seqa_ch_data[ADC_ID_SINUS_DETECT].value);
+
+    sin_detect_process(adc_seqa_ch_data[ADC_ID_SINUS_DETECT].value);
     
     return;
 }
+
 /**********************************************************************************************************************
  * Private functions
  *********************************************************************************************************************/

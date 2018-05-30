@@ -37,7 +37,8 @@ extern "C" {
 #define ADC_RESOLUTION          4096.0F     //!< ADC resolution 12 bit.
 
 
-#define ADC_CONVERT_MV(ADC_VALUE)   (ADC_VALUE * (ADC_VREF / ADC_RESOLUTION)) //!< Convert ADC value to millivolts.
+/**Convert ADC value to millivolts. */
+#define ADC_CONVERT_MV(ADC_VALUE)   (ADC_VALUE * (ADC_VREF / ADC_RESOLUTION))
 
 /**********************************************************************************************************************
  * Exported types
@@ -47,7 +48,7 @@ extern "C" {
  */
 typedef enum
 {
-    ADC_ID_SINUS_DETECT = 0,    //!< Sinus detection PIN.
+    ADC_ID_SINUS_DETECT = 0,    //!< Sinusoidal signal detection PIN.
     ADC_ID_LAST,                //!< Last should stay last.
 } adc_id_t;
 
@@ -67,9 +68,9 @@ typedef enum
  */
 void adc_init(void);
 /**
- * @brief   ADC sequencer A handler for timer.
+ * @brief   ADC handler for timer.
  */
-void adc_a_handler(void);
+void adc_handler(void);
 
 #ifdef __cplusplus
 }

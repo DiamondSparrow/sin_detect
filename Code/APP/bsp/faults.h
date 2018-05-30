@@ -4,7 +4,7 @@
  * @author      Deimantas Zvirblis
  * @version     1.0.0.0
  * @date        2017-05-04
- * @brief       This is C header file template.
+ * @brief       Faults C header file.
  **********************************************************************************************************************
  * @warning     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR \n
  *              IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\n

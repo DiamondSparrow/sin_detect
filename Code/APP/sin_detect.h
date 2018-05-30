@@ -33,6 +33,7 @@ extern "C" {
 /**********************************************************************************************************************
  * Exported definitions and macros
  *********************************************************************************************************************/
+#define SIN_DETECT_RATE         5000.0F                 //!< Sin detection rate in Hz.
 
 /**********************************************************************************************************************
  * Exported types
@@ -49,8 +50,29 @@ extern "C" {
 /**********************************************************************************************************************
  * Prototypes of exported functions
  *********************************************************************************************************************/
+/**
+ * @brief   Initialize sinusoidal signal frequency detection.
+ *
+ * @return  State of initialization
+ * @retval  0   failed
+ * @retval  1   success.
+ */
 bool sin_detect_init(void);
-void sin_detect_handler(uint32_t sinus);
+
+/**
+ * @brief   Process sinusoidal signal frequency detection.
+ *
+ * @note    This function must be called frequently. Frequency is defined by @ref SIN_DETECT_RATE.
+ *
+ * @param   signal  Signal to process.
+ */
+void sin_detect_process(uint32_t signal);
+
+/**
+ * @brief   Debug sinusoidal signal frequency.
+ *
+ * @note Call it from the thread.
+ */
 void sin_detect_debug(void);
 
 #ifdef __cplusplus

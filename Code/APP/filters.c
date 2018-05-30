@@ -1,10 +1,10 @@
 /**
  **********************************************************************************************************************
- * @file         filters.c
- * @author       Diamond Sparrow
- * @version      1.0.0.0
- * @date         2016-10-04
- * @brief        This is C source file template.
+ * @file        filters.c
+ * @author      Diamond Sparrow
+ * @version     1.0.0.0
+ * @date        2016-10-04
+ * @brief       Filters C source file.
  **********************************************************************************************************************
  * @warning     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR \n
  *              IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\n

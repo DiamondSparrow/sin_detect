@@ -148,7 +148,7 @@ void CT32B0_IRQHandler(void)
 {
     if(Chip_TIMER_MatchPending(LPC_TIMER32_0, 0))
     {
-        adc_a_handler();
+        adc_handler();
         Chip_TIMER_ClearMatch(LPC_TIMER32_0, 0);
     }
 
