@@ -23,3 +23,7 @@ Sin detect: 1, 256.128 Hz;
 Sin detect: 0, 384.512 Hz;
 ```
 First number indicates whether frequncy is in the range (0 - no, 1 - yes), seconds shows mesured frequency in Hz.
+
+There are two projects: one for Eeclipese CDT (because it's way better IDE for edditing), and other - Keil 5 project for compiling and debuging.
+
+Code is written in C and for commenting doxygen style was used.
