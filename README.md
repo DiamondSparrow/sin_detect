@@ -5,7 +5,7 @@ This program was designed for NXP MCU LPC11U68 (Cortex M0+) running at 48 MHz.
 to measure sinusoidal signal frequency and to indicate whether frequency is in range (from 100 to 300 Hz.) on LED. 
 It will measure sinusoidal signal (from 0 to VDD - 3.3 V.) on ADC channel 0 (PIO1.9) at defined frequency (5 kHz.) using timer.
 
-Frequency detection consists of:
+Frequency detection ([sin_detect.h](https://github.com/DiamondSparrow/sin_detect/blob/master/Code/APP/sin_detect.h), [sin_detect.c](https://github.com/DiamondSparrow/sin_detect/blob/master/Code/APP/sin_detect.c)) consists of:
 1. Measuring sinusoidal signal on ADC and averaging measured value for better accuracy.
 2. Algorithm will detect sinusoidal signal zero point and will count time between points.
 3. If zero point is detected it will accumulate time for more than several times (more than one sinusoid) to get better accuracy.
@@ -22,8 +22,8 @@ Sin detect: 1, 128.064 Hz;
 Sin detect: 1, 256.128 Hz;
 Sin detect: 0, 384.512 Hz;
 ```
-First number indicates whether frequency is in the range (0 – no, 1 – yes), second shows measured frequency in hertz.
+First number indicates whether frequency is in the range (0 â€“ no, 1 â€“ yes), second shows measured frequency in hertz.
 
-There are two projects: one for Eclipse CDT (because it's way better IDE for editing), and other – Keil 5 project for compiling and debugging.
+There are two projects: one for Eclipse CDT (because it's way better IDE for editing), and other â€“ Keil 5 project for compiling and debugging.
 
 Code is written in C and for commenting doxygen style was used.
