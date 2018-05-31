@@ -134,10 +134,8 @@ static void sin_detect_frquency(sin_detect_data_t *data, uint32_t signal)
 {
     float freq = 0;
 
-    // Pass signal to low pass filter.
-    data->current_signal = (uint32_t) filters_low_pass(
-            (filters_low_pass_t *) &sin_detect_lp_filter, (float) signal,
-            SIN_DETECT_LP_CUTOFF);
+    // Save current signal.
+    data->current_signal = signal;
 
     // Increment time measurement counter.
     data->counter++;
@@ -152,6 +150,8 @@ static void sin_detect_frquency(sin_detect_data_t *data, uint32_t signal)
         {
             // Calculate frequency.
             freq = 1.0 / (((float)(float)data->accumulator / (float)data->cycles) * 2.0 * (1.0 / SIN_DETECT_RATE));
+            // Pass frequency to low pass filter.
+            freq = filters_low_pass( (filters_low_pass_t *) &sin_detect_lp_filter, freq, SIN_DETECT_LP_CUTOFF);
             // Save frequency.
             data->frequncy = freq;
             // Clear cycles counter.
